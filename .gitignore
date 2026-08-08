@@ -1,5 +1,5 @@
+instance/
 venv/
 .env
 uploads/*.pdf
 __pycache__/
-*.db
