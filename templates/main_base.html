@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="STUIA transforma tus apuntes en resúmenes y preguntas para estudiar mejor.">
+        <title>{% block title %}STUIA{% endblock %}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body>
+        <header class="site-header">
+            <nav class="navbar container" aria-label="Navegación principal">
+                <a href="/" class="navbar__brand" aria-label="STUIA, ir al inicio">
+                    <span class="navbar__logo" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <path d="M8 9.5 16 5l8 4.5-8 4.5-8-4.5Z" fill="currentColor"/>
+                            <path d="M10.5 13v6.2c0 2 2.5 3.8 5.5 3.8s5.5-1.8 5.5-3.8V13" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 10v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span>STUIA</span>
+                </a>
+
+                <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="navbar__menu" id="main-menu">
+                    <div class="navbar__links">
+                        <a href="/" class="navbar__link{% if request.path == '/' %} active{% endif %}"{% if request.path == '/' %} aria-current="page"{% endif %}>Inicio</a>
+                        <a href="/#como-funciona" class="navbar__link">Cómo funciona</a>
+                        <a href="/historial" class="navbar__link{% if request.path == '/historial' %} active{% endif %}"{% if request.path == '/historial' %} aria-current="page"{% endif %}>Historial</a>
+                    </div>
+                    <a href="#subir-documento" class="button button--small">Empezar ahora</a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer__content">
+                <div class="footer__intro">
+                    <a href="/" class="navbar__brand navbar__brand--footer">
+                        <span class="navbar__logo" aria-hidden="true">
+                            <svg viewBox="0 0 32 32" fill="none">
+                                <path d="M8 9.5 16 5l8 4.5-8 4.5-8-4.5Z" fill="currentColor"/>
+                                <path d="M10.5 13v6.2c0 2 2.5 3.8 5.5 3.8s5.5-1.8 5.5-3.8V13" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </span>
+                        <span>STUIA</span>
+                    </a>
+                    <p>Menos tiempo organizando apuntes.<br>Más tiempo entendiendo.</p>
+                </div>
+                <div class="footer__links" aria-label="Enlaces del pie de página">
+                    <a href="/">Inicio</a>
+                    <a href="/#como-funciona">Cómo funciona</a>
+                    <a href="/historial">Historial</a>
+                </div>
+            </div>
+            <div class="container footer__bottom">
+                <p>&copy; {{ now.year if now is defined else 2026 }} STUIA. Tu espacio para estudiar mejor.</p>
+                <span>Hecho para mentes curiosas.</span>
+            </div>
+        </footer>
+
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,63 @@
+{% extends "main_base.html" %}
+
+{% block title %}Historial de estudio | STUIA{% endblock %}
+
+{% block content %}
+    <section class="history-hero">
+        <div class="history-hero__mark" aria-hidden="true">H</div>
+        <div class="container history-hero__content">
+            <div>
+                <div class="eyebrow"><span></span> TU BIBLIOTECA PERSONAL</div>
+                <h1>Todo lo que has<br><em>aprendido.</em></h1>
+            </div>
+            <div class="history-hero__intro">
+                <p>Vuelve a tus sesiones anteriores y mantén todos tus materiales de estudio organizados en un solo lugar.</p>
+                <a href="/#subir-documento" class="button">
+                    Nueva sesión
+                    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="history-section" aria-labelledby="history-title">
+        <div class="container">
+            <div class="history-toolbar">
+                <div class="history-toolbar__title">
+                    <span class="section-number">01</span>
+                    <div>
+                        <h2 id="history-title">Sesiones anteriores</h2>
+                        <p id="historyCount">Cargando tu historial...</p>
+                    </div>
+                </div>
+                <label class="history-search" for="historySearch">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <span class="sr-only">Buscar por nombre</span>
+                    <input type="search" id="historySearch" placeholder="Buscar un documento..." autocomplete="off">
+                </label>
+            </div>
+
+            <div class="history-loading" id="historyLoading" aria-live="polite">
+                <span></span><span></span><span></span>
+                <p>Organizando tus sesiones</p>
+            </div>
+
+            <div class="history-list oculto" id="historyList"></div>
+
+            <div class="history-empty oculto" id="historyEmpty">
+                <span class="history-empty__icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32" fill="none"><path d="M7 5h14l4 4v18H7V5Z" stroke="currentColor" stroke-width="1.7"/><path d="M21 5v5h5M11 15h10M11 20h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </span>
+                <h3 id="emptyTitle">Tu biblioteca está esperando</h3>
+                <p id="emptyText">Cuando proceses tu primer documento, aparecerá aquí para que puedas encontrarlo fácilmente.</p>
+                <a href="/#subir-documento" class="button">Crear mi primera sesión</a>
+            </div>
+
+            <div class="history-error oculto" id="historyError" role="alert">
+                <span>!</span>
+                <div><strong>No pudimos cargar el historial</strong><p>Comprueba la conexión e inténtalo de nuevo.</p></div>
+                <button type="button" id="retryHistory">Reintentar</button>
+            </div>
+        </div>
+    </section>
+{% endblock %}

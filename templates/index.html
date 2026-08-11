@@ -1,0 +1,109 @@
+{% extends "main_base.html" %}
+
+{% block title %}STUIA | Convierte tus apuntes en conocimiento{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero__shape hero__shape--one" aria-hidden="true"></div>
+        <div class="hero__shape hero__shape--two" aria-hidden="true"></div>
+        <div class="container hero__grid">
+            <div class="hero__copy">
+                <div class="eyebrow"><span></span> Tu compañero de estudio con IA</div>
+                <h1>De un PDF a una sesión de estudio <em>que sí funciona.</em></h1>
+                <p class="hero__lead">Sube tus apuntes y obtén un resumen claro y preguntas de repaso en pocos minutos. Sin ruido, solo lo que necesitas aprender.</p>
+                <div class="hero__actions">
+                    <a href="#subir-documento" class="button">
+                        Subir mis apuntes
+                        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 4 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#como-funciona" class="text-link">Ver cómo funciona <span aria-hidden="true">↓</span></a>
+                </div>
+                <div class="hero__note">
+                    <div class="avatar-stack" aria-hidden="true"><span>F</span><span>L</span><span>M</span></div>
+                    <p><strong>Estudia con intención.</strong><br>Una herramienta sencilla, pensada para ti.</p>
+                </div>
+            </div>
+
+            <div class="upload-card" id="subir-documento">
+                <div class="upload-card__header">
+                    <span class="step-label">01 / EMPIEZA AQUÍ</span>
+                    <span class="status-dot">Listo</span>
+                </div>
+                <div class="upload-card__body">
+                    <div class="upload-card__title">
+                        <span class="upload-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8"/><path d="M14 2v6h6M12 18v-6m-3 3 3-3 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        <div><h2>Tu documento</h2><p>Elige el material que quieres dominar.</p></div>
+                    </div>
+
+                    <label class="drop-zone" for="inputArchivo" id="dropZone">
+                        <input type="file" id="inputArchivo" accept=".pdf,application/pdf">
+                        <span class="drop-zone__plus" aria-hidden="true">+</span>
+                        <strong>Arrastra tu PDF aquí</strong>
+                        <span>o haz clic para buscarlo</span>
+                        <small>PDF · Máximo 10 MB</small>
+                    </label>
+
+                    <div class="selected-file oculto" id="selectedFile">
+                        <span class="selected-file__type">PDF</span>
+                        <div><strong id="fileName"></strong><small id="fileSize"></small></div>
+                        <button type="button" id="removeFile" aria-label="Quitar archivo">×</button>
+                    </div>
+
+                    <button class="button button--full" id="btnGenerar" type="button" disabled>
+                        <span>Crear mi sesión de estudio</span>
+                        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7 4 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <p class="upload-card__privacy"><span aria-hidden="true">◇</span> Tu documento se procesa de forma privada</p>
+                    <p class="form-message oculto" id="formMessage" role="alert"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section" id="como-funciona">
+        <div class="container">
+            <div class="section-heading">
+                <div><span class="section-number">02</span><span class="eyebrow">UN PROCESO SIMPLE</span></div>
+                <h2>Del documento al dominio<br>en tres pasos.</h2>
+                <p>Nos ocupamos de organizar la información para que tú puedas concentrarte en comprenderla.</p>
+            </div>
+            <div class="process-grid">
+                <article class="process-card">
+                    <span class="process-card__number">01</span>
+                    <div class="process-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m-4 4 4-4 4 4M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Sube tus apuntes</h3>
+                    <p>Selecciona cualquier documento PDF con el contenido que estás estudiando.</p>
+                </article>
+                <article class="process-card process-card--featured">
+                    <span class="process-card__number">02</span>
+                    <div class="process-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 9.7 8.7 4 11l5.7 2.3L12 19l2.3-5.7L20 11l-5.7-2.3L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+                    <h3>La IA encuentra lo esencial</h3>
+                    <p>Analizamos el contenido, identificamos ideas clave y conectamos los conceptos.</p>
+                </article>
+                <article class="process-card">
+                    <span class="process-card__number">03</span>
+                    <div class="process-card__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14v16H5zM8 8h8M8 12h5M8 16h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <h3>Repasa y aprende</h3>
+                    <p>Recibe un resumen estructurado y preguntas diseñadas para fijar lo aprendido.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="results-section oculto" id="resultado" aria-live="polite">
+        <div class="container">
+            <div class="section-heading section-heading--results">
+                <div><span class="section-number">03</span><span class="eyebrow">TU SESIÓN DE ESTUDIO</span></div>
+                <h2>Todo listo para repasar.</h2>
+            </div>
+            <article class="result-card">
+                <span class="result-card__label">Resumen esencial</span>
+                <p id="textoResumen"></p>
+            </article>
+            <div class="questions-heading"><h3>Preguntas de repaso</h3><span>Comprueba lo que has aprendido</span></div>
+            <div id="listaPreguntas" class="questions-list"></div>
+        </div>
+    </section>
+{% endblock %}

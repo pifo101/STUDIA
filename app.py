@@ -30,6 +30,8 @@ def build_prompt(texto_documento):
 1. Un resumen claro de 150-200 palabras, enfocado en los conceptos clave.
 2. Exactamente 5 preguntas de repaso que evalúen comprensión, cada una con su respuesta correcta.
 3. Utiliza saltos de linea para diferenciar cada pregunta y respuesta para tener una estructura clara para la lectura.
+4. añadir referencias de que parte del documento fue sacada la información, tanto en el resumen como en las respuestas a las preguntas
+5. Las preguntas y respuestas deben ser relevantes, no cuestionar información trivial o irrelevante
 
 Responde ÚNICAMENTE en este formato JSON, sin texto adicional:
 {{"summary": "...", "questions": [{{"question": "...", "answer": "..."}}]}}
@@ -65,6 +67,11 @@ def generate_response_sumary_and_questions(document_text):
 @app.route("/")
 def index():
     return render_template("index.html")
+
+
+@app.route("/historial")
+def history_page():
+    return render_template("history.html")
 
 
 @app.route("/api/process", methods=["POST"])
